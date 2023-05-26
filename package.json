@@ -1,0 +1,25 @@
+{
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  },
+  "name": "test-technique-yannport",
+  "version": "1.0.0",
+  "description": "test technique pour entreprise yannport",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "dev": "tsc main.ts --watch & nodemon main.js",
+    "start": "node ./dist/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Devconte/Test-Technique-Yannport.git"
+  },
+  "author": "Devconte",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Devconte/Test-Technique-Yannport/issues"
+  },
+  "homepage": "https://github.com/Devconte/Test-Technique-Yannport#readme"
+}
