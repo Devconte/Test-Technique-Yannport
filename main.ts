@@ -16,12 +16,32 @@ enum Direction {
   West = "W",
   South = "S",
 };
+interface CleanerInterface {
+  x: number,
+  y: number,
+  direction: Direction
+}
 
 const cleaner = {
   x: 5,
   y: 5,
   direction: Direction.North,
 };
+
+class App {
+  private  grid: GridInterface;
+  private cleaner: CleanerInterface;
+
+  constructor(
+    grid: GridInterface, 
+    cleaner: CleanerInterface) {
+      this.grid = grid || { x: 10, y: 10 };
+      this.cleaner = cleaner || { x: 5, y: 5, direction: Direction.North };
+
+
+
+}
+}
 
 function move(instruction: string) {
   if (isOnTheEdges()) return;
@@ -41,6 +61,10 @@ function move(instruction: string) {
     }
 }
 
+/**
+ * this me
+ * @returns 
+ */
 function isOnTheEdges(){
   if(cleaner.direction === Direction.North && cleaner.y === grid.y ) {
     return false;
