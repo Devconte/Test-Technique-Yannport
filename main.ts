@@ -28,7 +28,7 @@ const cleaner = {
   direction: Direction.North,
 };
 
-class App {
+class VacuumCleaner {
   private  grid: GridInterface;
   private cleaner: CleanerInterface;
 
@@ -38,82 +38,81 @@ class App {
       this.grid = grid || { x: 10, y: 10 };
       this.cleaner = cleaner || { x: 5, y: 5, direction: Direction.North };
 
-
-
-}
-}
-
-function move(instruction: string) {
-  if (isOnTheEdges()) return;
-    switch (cleaner.direction) {
-      case Direction.North:
-        cleaner.y++;
-        break;
-      case Direction.East:
-        cleaner.x++;
-        break;
-      case Direction.West:
-        cleaner.x--;
-        break;
-      case Direction.South:
-        cleaner.y--;
-        break;
     }
-}
 
-/**
- * this me
- * @returns 
- */
-function isOnTheEdges(){
-  if(cleaner.direction === Direction.North && cleaner.y === grid.y ) {
-    return false;
-  }
-  if(cleaner.direction === Direction.East && cleaner.x === grid.x ) {
-    return false;
-  }
-  if(cleaner.direction === Direction.South && cleaner.y === 0 ) {
-    return false; 
-  }
-  if(cleaner.direction === Direction.West && cleaner.y === 0 ) {
-    return false;
-  }
-  return true;
-}
+    private move(instruction: string) {
+      if (!this.canMoveForward()) return;
+        switch (cleaner.direction) {
+          case Direction.North:
+            cleaner.y++;
+            break;
+          case Direction.East:
+            cleaner.x++;
+            break;
+          case Direction.West:
+            cleaner.x--;
+            break;
+          case Direction.South:
+            cleaner.y--;
+            break;
+        }
+    }
 
-function Orientation(direction: ChangeDirection) {
-  switch (direction) {
-    case "D":
-      switch (cleaner.direction) {
-        case Direction.North:
-          cleaner.direction = Direction.East;
+
+    private canMoveForward(){
+      if(cleaner.direction === Direction.North && cleaner.y === grid.y ) {
+        return false;
+      }
+      if(cleaner.direction === Direction.East && cleaner.x === grid.x ) {
+        return false;
+      }
+      if(cleaner.direction === Direction.South && cleaner.y === 0 ) {
+        return false; 
+      }
+      if(cleaner.direction === Direction.West && cleaner.y === 0 ) {
+        return false;
+      }
+      return true;
+    }
+
+    private Orientation(direction: ChangeDirection) {
+      switch (direction) {
+        case "D":
+          switch (cleaner.direction) {
+            case Direction.North:
+              cleaner.direction = Direction.East;
+              break;
+            case Direction.East:
+              cleaner.direction = Direction.South;
+              break;
+            case Direction.South:
+              cleaner.direction = Direction.West;
+              break;
+            case Direction.West:
+              cleaner.direction = Direction.North;
+              break;
+          }
           break;
-        case Direction.East:
-          cleaner.direction = Direction.South;
-          break;
-        case Direction.South:
-          cleaner.direction = Direction.West;
-          break;
-        case Direction.West:
-          cleaner.direction = Direction.North;
+        case "G":
+          switch (cleaner.direction) {
+            case Direction.North:
+              cleaner.direction = Direction.West;
+              break;
+            case Direction.East:
+              cleaner.direction = Direction.North;
+              break;
+            case Direction.South:
+              cleaner.direction = Direction.East;
+              break;
+            case Direction.West:
+              cleaner.direction = Direction.South;
+              break;
+          }
           break;
       }
-      break;
-    case "G":
-      switch (cleaner.direction) {
-        case Direction.North:
-          cleaner.direction = Direction.West;
-          break;
-        case Direction.East:
-          cleaner.direction = Direction.North;
-          break;
-        case Direction.South:
-          cleaner.direction = Direction.East;
-          break;
-        case Direction.West:
-          cleaner.direction = Direction.South;
-          break;
-      }
-      break;
-  }
+    }
+    
 }
+
+
+
