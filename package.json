@@ -1,7 +1,9 @@
 {
   "devDependencies": {
+    "@types/node": "^20.2.5",
     "typescript": "^5.0.4"
   },
+  "type":"module",
   "name": "test-technique-yannport",
   "version": "1.0.0",
   "description": "test technique pour entreprise yannport",
